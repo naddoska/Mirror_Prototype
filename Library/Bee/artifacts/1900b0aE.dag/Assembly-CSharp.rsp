@@ -412,6 +412,7 @@
 "Assets/Mirror/Transports/KCP/MirrorTransport/KcpTransport.cs"
 "Assets/Mirror/Transports/Latency/LatencySimulation.cs"
 "Assets/Mirror/Transports/Telepathy/TelepathyTransport.cs"
+"Assets/NewNetworkManager.cs"
 "Assets/ParrelSync-master/ParrelSync-master/Examples/CustomArgumentExample.cs"
 "Assets/Scripts/ChooseCharacter.cs"
 "Assets/Scripts/NetManager.cs"

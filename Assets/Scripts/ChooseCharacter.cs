@@ -1,18 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror; 
 
-public class ChooseCharacter : MonoBehaviour
+public class ChooseCharacter : NetworkManager
 {
-    // Start is called before the first frame update
-    void Start()
+    Vector3 spawnPos = new Vector3(0, 0, 0);
+    public override void OnStartServer()
     {
-        
+        base.OnStartServer();
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public override void OnClientConnect()
     {
-        
+        base.OnClientConnect();
+        InstantiatePrefab();
+    }
+    void InstantiatePrefab()
+    {
+        GameObject gameobject = Instantiate(playerPrefab);
+       // NetworkServer.AddPlayerForConnection(gameobject);
     }
 }

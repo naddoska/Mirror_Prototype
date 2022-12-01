@@ -97,6 +97,7 @@ namespace Mirror
         [Tooltip("Prefab of the player object. Prefab must have a Network Identity component. May be an empty game object or a full avatar.")]
         public GameObject playerPrefab;
 
+
         /// <summary>Enable to automatically create player objects on connect and on scene change.</summary>
         [FormerlySerializedAs("m_AutoCreatePlayer")]
         [Tooltip("Should Mirror automatically spawn the player after scene change?")]
@@ -1349,6 +1350,8 @@ namespace Mirror
                 NetworkClient.AddPlayer();
             }
         }
+
+
 
         // Since there are multiple versions of StartServer, StartClient and
         // StartHost, to reliably customize their functionality, users would
