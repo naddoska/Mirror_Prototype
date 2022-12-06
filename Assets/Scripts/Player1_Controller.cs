@@ -7,12 +7,16 @@ using UnityEngine;
 public class Player1_Controller : NetworkBehaviour
 {
     public Rigidbody Player1;
-    public float horizontalInput;
-    public float rotationInput;
-    public float verticalInput;
-    public float speed = 10.0f;
-    public float height = 1.8f;
-    private bool isfirstperson = true; 
+    private float horizontalInput;
+    private float verticalInput;
+    private float speed = 10.0f;
+    private float height = 1.8f;
+    private float rotationInputX;
+    private float rotationInputY;
+    private float rotationSpeed = 1.5f;
+
+    private bool isFirstPerson = true;
+  
 
     // Update is called once per frame
     public override void OnStartLocalPlayer()
@@ -20,9 +24,10 @@ public class Player1_Controller : NetworkBehaviour
         Camera.main.transform.SetParent(transform);
         Camera.main.transform.localPosition = new Vector3( 0, height, 0);
         Camera.main.transform.localRotation = Quaternion.identity;
+        
     }
 
-    private void Update()
+    private void Update() //Update for Movement!
     {
         if (isLocalPlayer)
         {
@@ -37,30 +42,39 @@ public class Player1_Controller : NetworkBehaviour
     {
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
-        //if (Input.GetMouseButtonDown(0)) mousemovement for later
-        //{
-            //rotationInput = Input.
-        //}
+        rotationInputX += Input.GetAxis("Mouse X") * rotationSpeed;
+        rotationInputY += Input.GetAxis("Mouse Y") * rotationSpeed;
+        // if (Input.GetMouseButtonDown(0))
+            
+            if (Input.GetMouseButton(0))
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                transform.localRotation = Quaternion.Euler(0, rotationInputX, 0);
+                Camera.main.transform.localRotation = Quaternion.Euler(-rotationInputY, 0, 0);
+            }
+           else
+            {
+                Cursor.lockState = CursorLockMode.None;
+            }
+        
         transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * speed);
         transform.Translate(Vector3.forward * verticalInput * Time.deltaTime * speed);
-        // transform.Rotate
+        
     }
 
-    private void CameraSwitch()
+    private void CameraSwitch() 
     {
         if (Input.GetKeyDown(KeyCode.V))
         {
-            if (isfirstperson)
+            if (isFirstPerson)
             {
                 Camera.main.transform.localPosition = new Vector3(0, 2, -1);
-                Debug.Log("Aussen");
-                isfirstperson = false;
+                isFirstPerson = false;
             }
             else
             {
                 Camera.main.transform.localPosition = new Vector3(0, height, 0);
-                Debug.Log("Innen");
-                isfirstperson = true;
+                isFirstPerson = true;
             }
         }
     }
