@@ -62,6 +62,7 @@
     <Compile Include="Assets\Scripts\ChooseCharacter.cs" />
     <Compile Include="Assets\ParrelSync-master\ParrelSync-master\Examples\CustomArgumentExample.cs" />
     <Compile Include="Assets\NewNetworkManager.cs" />
+    <Compile Include="Assets\Scripts\FollowPlayer.cs" />
     <Compile Include="Assets\Scripts\Player1_Controller.cs" />
     <Compile Include="Assets\Scripts\NetManager.cs" />
   </ItemGroup>

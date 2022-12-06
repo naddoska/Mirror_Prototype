@@ -415,6 +415,7 @@
 "Assets/NewNetworkManager.cs"
 "Assets/ParrelSync-master/ParrelSync-master/Examples/CustomArgumentExample.cs"
 "Assets/Scripts/ChooseCharacter.cs"
+"Assets/Scripts/FollowPlayer.cs"
 "Assets/Scripts/NetManager.cs"
 "Assets/Scripts/Player1_Controller.cs"
 -langversion:9.0
