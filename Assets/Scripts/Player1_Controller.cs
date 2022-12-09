@@ -14,17 +14,19 @@ public class Player1_Controller : NetworkBehaviour
     private float rotationInputX;
     private float rotationInputY;
     private float rotationSpeed = 1.5f;
+    private float mouseStartX;
+    private float mouseStartY;
 
     private bool isFirstPerson = true;
-  
+
 
     // Update is called once per frame
     public override void OnStartLocalPlayer()
     {
         Camera.main.transform.SetParent(transform);
-        Camera.main.transform.localPosition = new Vector3( 0, height, 0);
+        Camera.main.transform.localPosition = new Vector3(0, height, 0);
         Camera.main.transform.localRotation = Quaternion.identity;
-        
+
     }
 
     private void Update() //Update for Movement!
@@ -42,27 +44,35 @@ public class Player1_Controller : NetworkBehaviour
     {
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
-        rotationInputX += Input.GetAxis("Mouse X") * rotationSpeed;
-        rotationInputY += Input.GetAxis("Mouse Y") * rotationSpeed;
-        // if (Input.GetMouseButtonDown(0))
-            
-            if (Input.GetMouseButton(0))
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-                transform.localRotation = Quaternion.Euler(0, rotationInputX, 0);
-                Camera.main.transform.localRotation = Quaternion.Euler(-rotationInputY, 0, 0);
-            }
-           else
-            {
-                Cursor.lockState = CursorLockMode.None;
-            }
-        
+
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            mouseStartX = Input.GetAxis("Mouse X");
+            mouseStartY = Input.GetAxis("Mouse Y");
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            Cursor.visible = true;
+        }
+
+        if (Input.GetMouseButton(0))
+        {
+
+            rotationInputX += (Input.GetAxis("Mouse X") - mouseStartX) * rotationSpeed;
+            rotationInputY += (Input.GetAxis("Mouse Y") - mouseStartY) * rotationSpeed;
+            transform.localRotation = Quaternion.Euler(0, rotationInputX, 0);
+            Camera.main.transform.localRotation = Quaternion.Euler(-rotationInputY, 0, 0);
+            Cursor.visible = false;
+        }
+
         transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * speed);
         transform.Translate(Vector3.forward * verticalInput * Time.deltaTime * speed);
-        
+
     }
 
-    private void CameraSwitch() 
+    private void CameraSwitch()
     {
         if (Input.GetKeyDown(KeyCode.V))
         {
@@ -80,5 +90,5 @@ public class Player1_Controller : NetworkBehaviour
     }
 
 
-    
+
 }

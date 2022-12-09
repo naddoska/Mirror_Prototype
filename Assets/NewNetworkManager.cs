@@ -165,6 +165,7 @@ public class NewNetworkManager : NetworkManager
     /// <param name="conn">Connection from client.</param>
     public override void OnServerDisconnect(NetworkConnectionToClient conn)
     {
+        Cursor.visible = true;
         base.OnServerDisconnect(conn);
     }
 
