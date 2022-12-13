@@ -1107,7 +1107,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3351804815359831899}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1116,7 +1116,7 @@ Transform:
   - {fileID: 3454019039966390300}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &6623983036408799521
 Animator:
   serializedVersion: 4
@@ -1184,9 +1184,6 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   Player1: {fileID: 0}
-  horizontalInput: 0
-  verticalInput: 0
-  speed: 10
 --- !u!65 &2755576589341276354
 BoxCollider:
   m_ObjectHideFlags: 0
