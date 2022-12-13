@@ -29,12 +29,21 @@ public class Player1_Controller : NetworkBehaviour
 
     }
 
+
+    private void FixedUpdate()
+    {
+     if (isLocalPlayer)
+        {
+            CmdMove();
+        }
+    }
+
     private void Update() //Update for Movement!
     {
         if (isLocalPlayer)
         {
             CameraSwitch();
-            CmdMove();
+            MouseNotClicked();
         }
     }
 
@@ -52,11 +61,6 @@ public class Player1_Controller : NetworkBehaviour
             mouseStartY = Input.GetAxis("Mouse Y");
         }
 
-        if (Input.GetMouseButtonUp(0))
-        {
-            Cursor.visible = true;
-        }
-
         if (Input.GetMouseButton(0))
         {
 
@@ -70,6 +74,14 @@ public class Player1_Controller : NetworkBehaviour
         transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * speed);
         transform.Translate(Vector3.forward * verticalInput * Time.deltaTime * speed);
 
+    }
+
+    private void MouseNotClicked()
+    {
+        if (Input.GetMouseButtonUp(0))
+        {
+            Cursor.visible = true;
+        }
     }
 
     private void CameraSwitch()
