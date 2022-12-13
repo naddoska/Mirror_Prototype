@@ -1,6 +1,4 @@
 using Mirror;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -11,11 +9,13 @@ public class Player1_Controller : NetworkBehaviour
     private float verticalInput;
     private float speed = 10.0f;
     private float height = 1.8f;
-    private float rotationInputX;
-    private float rotationInputY;
+    private float rotationInputVertical;
+    private float rotationInputHorizontal;
     private float rotationSpeed = 1.5f;
     private float mouseStartX;
     private float mouseStartY;
+    private float rotationMaxDown = 42.0f;
+    private float rotationMaxUp = 45.0f;
 
     private bool isFirstPerson = true;
 
@@ -28,8 +28,6 @@ public class Player1_Controller : NetworkBehaviour
         Camera.main.transform.localRotation = Quaternion.identity;
 
     }
-
-
     private void FixedUpdate()
     {
      if (isLocalPlayer)
@@ -37,7 +35,6 @@ public class Player1_Controller : NetworkBehaviour
             CmdMove();
         }
     }
-
     private void Update() //Update for Movement!
     {
         if (isLocalPlayer)
@@ -46,9 +43,6 @@ public class Player1_Controller : NetworkBehaviour
             MouseNotClicked();
         }
     }
-
-
-
     private void CmdMove()
     {
         horizontalInput = Input.GetAxis("Horizontal");
@@ -63,11 +57,11 @@ public class Player1_Controller : NetworkBehaviour
 
         if (Input.GetMouseButton(0))
         {
-
-            rotationInputX += (Input.GetAxis("Mouse X") - mouseStartX) * rotationSpeed;
-            rotationInputY += (Input.GetAxis("Mouse Y") - mouseStartY) * rotationSpeed;
-            transform.localRotation = Quaternion.Euler(0, rotationInputX, 0);
-            Camera.main.transform.localRotation = Quaternion.Euler(-rotationInputY, 0, 0);
+            rotationInputVertical += (Input.GetAxis("Mouse X") - mouseStartX) * rotationSpeed;
+            rotationInputHorizontal += (Input.GetAxis("Mouse Y") - mouseStartY) * rotationSpeed;
+            rotationInputHorizontal = Mathf.Clamp(rotationInputHorizontal, -rotationMaxDown, rotationMaxUp);
+            transform.localRotation = Quaternion.Euler(0, rotationInputVertical, 0);
+            Camera.main.transform.localRotation = Quaternion.Euler(-rotationInputHorizontal, 0, 0);
             Cursor.visible = false;
         }
 
@@ -100,7 +94,5 @@ public class Player1_Controller : NetworkBehaviour
             }
         }
     }
-
-
 
 }
