@@ -166,7 +166,6 @@ public class NewNetworkManager : NetworkManager
     public override void OnServerDisconnect(NetworkConnectionToClient conn)
     {
         Cursor.visible = true;
-        Instantiate(Camera.main);
         base.OnServerDisconnect(conn);
     }
 
@@ -198,8 +197,8 @@ public class NewNetworkManager : NetworkManager
     public override void OnClientDisconnect()
     {
         base.OnClientDisconnect();
-        Instantiate(Camera.main);
         Cursor.visible = true;
+        Instantiate(Camera.main);
     }
 
     /// <summary>

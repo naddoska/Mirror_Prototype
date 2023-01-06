@@ -1,6 +1,7 @@
 using Mirror;
 using UnityEngine;
-
+using UnityEngine.UIElements;
+using Cursor = UnityEngine.Cursor;
 
 public class Player1_Controller : NetworkBehaviour
 {
@@ -17,30 +18,36 @@ public class Player1_Controller : NetworkBehaviour
     private float rotationMaxDown = 42.0f;
     private float rotationMaxUp = 45.0f;
 
+    public Animator anim = null; 
+
     private bool isFirstPerson = true;
 
 
     // Update is called once per frame
     public override void OnStartLocalPlayer()
     {
+        anim = GetComponent<Animator>();
         Camera.main.transform.SetParent(transform);
         Camera.main.transform.localPosition = new Vector3(0, height, 0);
         Camera.main.transform.localRotation = Quaternion.identity;
 
     }
+
     private void FixedUpdate()
     {
      if (isLocalPlayer)
         {
             CmdMove();
+            
         }
     }
-    private void Update() //Update for Movement!
+    private void Update() 
     {
         if (isLocalPlayer)
         {
             CameraSwitch();
-            MouseNotClicked();
+            MouseNotClicked(); 
+            AllAnimation();     
         }
     }
     private void CmdMove()
@@ -95,4 +102,11 @@ public class Player1_Controller : NetworkBehaviour
         }
     }
 
+    private void AllAnimation()
+    {
+        anim.SetBool("Walking", Input.GetAxis("Vertical") != 0);
+        anim.SetBool("Clapping", Input.GetKey(KeyCode.R));
+        anim.SetBool("Waving", Input.GetKey(KeyCode.T));
+        anim.SetBool("Dancing", Input.GetKey(KeyCode.Z));
+    }
 }

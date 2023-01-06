@@ -697,7 +697,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2395556853240708770}
-  m_LocalRotation: {x: 0.001959824, y: 0.0563645, z: -0.9978452, w: 0.03352915}
+  m_LocalRotation: {x: 0.001959824, y: 0.056364506, z: -0.9978452, w: 0.03352916}
   m_LocalPosition: {x: 0.095455974, y: -0.01957888, z: 0.002789649}
   m_LocalScale: {x: 1.0000039, y: 1.0000002, z: 1.0000118}
   m_ConstrainProportionsScale: 0
@@ -1681,7 +1681,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7083201150882914196}
-  m_LocalRotation: {x: 0.13336854, y: -0.046558186, z: -0.03151113, w: 0.98947066}
+  m_LocalRotation: {x: 0.13336854, y: -0.04655819, z: -0.03151113, w: 0.9894707}
   m_LocalPosition: {x: 0.00000004350573, y: 0.028316354, z: 0.000000004440091}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2311,6 +2311,7 @@ GameObject:
   - component: {fileID: 8485211983899599723}
   - component: {fileID: 1051823659637268179}
   - component: {fileID: -7176775343068033470}
+  - component: {fileID: 722472109533358174}
   m_Layer: 0
   m_Name: Player5
   m_TagString: Untagged
@@ -2345,7 +2346,7 @@ Animator:
   m_GameObject: {fileID: 9136689654729832967}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 2959e7c83a4719e49be9d20621fa24ca, type: 2}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: caf47011d1d365146b363f68752b1a0d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -2398,7 +2399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f74aedd71d9a4f55b3ce499326d45fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncDirection: 0
+  syncDirection: 1
   syncMode: 0
   syncInterval: 0
   target: {fileID: 5751918702635794044}
@@ -2441,8 +2442,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.7268865, z: 0.45597118}
-  m_Center: {x: -0, y: 0.89389765, z: -0.020053834}
+  m_Size: {x: 1, y: 1.7579125, z: 0.45597118}
+  m_Center: {x: 0, y: 0.87838465, z: -0.020053834}
 --- !u!114 &-7176775343068033470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2459,6 +2460,24 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   Player1: {fileID: 0}
+  anim: {fileID: 1115656459128320536}
+--- !u!114 &722472109533358174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9136689654729832967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f6f3bf89aa97405989c802ba270f815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 1
+  syncMode: 0
+  syncInterval: 0.1
+  clientAuthority: 1
+  animator: {fileID: 1115656459128320536}
 --- !u!1 &9200024358439653389
 GameObject:
   m_ObjectHideFlags: 0

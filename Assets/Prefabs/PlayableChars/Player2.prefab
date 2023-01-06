@@ -1093,6 +1093,7 @@ GameObject:
   - component: {fileID: 2755576589341276354}
   - component: {fileID: 3855832294561088506}
   - component: {fileID: -4885548299440485431}
+  - component: {fileID: -1062089122925620009}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Untagged
@@ -1127,7 +1128,7 @@ Animator:
   m_GameObject: {fileID: 3351804815359831899}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: ba5173a85368a4f4eb45fbc497be292c, type: 2}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: caf47011d1d365146b363f68752b1a0d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -1184,6 +1185,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   Player1: {fileID: 0}
+  anim: {fileID: 6623983036408799521}
 --- !u!65 &2755576589341276354
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1195,8 +1197,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.9685857, z: 0.4419549}
-  m_Center: {x: 0, y: 0.9834336, z: -0.05236253}
+  m_Size: {x: 1, y: 1.9778978, z: 0.4419549}
+  m_Center: {x: 0, y: 0.9787776, z: -0.05236253}
 --- !u!114 &3855832294561088506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1241,6 +1243,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-1062089122925620009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3351804815359831899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f6f3bf89aa97405989c802ba270f815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 1
+  syncMode: 0
+  syncInterval: 0.1
+  clientAuthority: 1
+  animator: {fileID: 6623983036408799521}
 --- !u!1 &3454850618658722949
 GameObject:
   m_ObjectHideFlags: 0
