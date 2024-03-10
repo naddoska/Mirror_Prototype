@@ -37,8 +37,7 @@ public class Player1_Controller : NetworkBehaviour
     {
      if (isLocalPlayer)
         {
-            CmdMove();
-            
+            CmdMove();    
         }
     }
     private void Update() 
